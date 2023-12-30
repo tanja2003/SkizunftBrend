@@ -1,0 +1,441 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/*Alles was auf dem Winter Bild zu sehen ist*/
+.Img-Container{
+    position: relative;
+    display: block;
+    height: 60vh;
+    width: 100%;
+
+}
+.Logo-Img{
+    display: inline-block;
+    width: 8%;
+    position: relative;
+    z-index: 1;
+    margin: 2% 10% 2% 2%;
+}
+
+.Winter-Img{
+    width: 100%;
+    object-fit: cover;
+    position: absolute; 
+    left: 0;
+    top: 0;
+}
+
+/*Navigations-Bar*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    font-size: 120%;
+    width: 100%;
+    height: 8vw;
+    position: absolute;
+    background-color: rgba(180,180,180, 0.5);
+
+}
+
+.Links {
+    list-style-type: none;
+    display: flex; /* Links horizontal ausgerichtet sind */
+    align-items: center; /* Vertikal zentrieren */
+    padding: 1%;
+    flex-wrap: wrap;  /* links über mehrere Zeilen */
+    max-block-size: 4em;
+    font-size: larger;
+}
+
+
+a {
+    color: rgb(0, 0, 0);
+    font-size:large;
+    font-weight: normal;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-color: #d90000;
+  
+}
+.Facebook{
+    display: flex;
+    align-items: center;
+    margin-left: 10px; 
+}
+
+.Facebook img {
+    height: 15.5px; 
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+a.Facebook:hover{
+  color: rgba(180,180,180, 0);
+}
+.Insta{
+    display: flex;
+    align-items: center;
+    margin-left: 10px; 
+}
+.Insta img{
+    height: 16px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+
+
+
+/*Sub-Links*/
+#subLinks {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  background-color: rgba(180,180,180, 0.9); 
+  border: 2px solid rgb(0, 0, 0);
+  padding: 0.0001px;
+}
+
+#subLinks li {
+  padding: 10px;
+  border: 3px solid rgb(0, 0, 0); 
+}
+
+#subLinks a {
+  text-decoration: none;
+  display: block; /* Vollständige Breite und Höhe für den Link */
+
+
+}
+#subLinks li:hover {
+  background-color: white; 
+}
+#subLinks a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+
+
+/*Timeline  */
+
+.timeline{
+    position: absolute;
+    margin:  45% 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    right: 2px;
+    left: 2px;
+    max-block-size: 5em;
+
+}
+
+.container{ 
+    position: relative; /* balken an Datum*/
+    height: 5%;
+    padding: 0px 20px 0px 20px;
+    margin: 0 10% 0 10%;
+    background-color: white;
+    
+}
+  
+.year {
+    font-size: 120%;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    margin: 0 0 0 9%;
+    transform: translateX(-50%);
+    text-align: center;
+
+}
+
+.line {
+    position: absolute;
+    left: 1%;
+    width: 96.5%;
+    height: 3px; 
+    background-color: black; 
+    bottom: 0;
+}
+
+.vertical-line {
+    position: absolute;
+    width: 5px; 
+    height: 10px;
+    background-color: black; 
+    right: 50%; /* In der Mitte positionieren */
+    transform: translateX(50%);
+    bottom: 3px;
+}
+
+.arrow {
+  position: absolute;
+  bottom: -20%;
+  left: 97.5%;
+  transform: translateX(50%);
+  transform: translateY(40%);
+  border-top: 10px solid transparent;  /*Um die Form für den Pfeil zu bestimmen*/
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid black; 
+}
+
+
+/* Langläufer*/
+
+.skier {
+  position: absolute;
+  margin:  28% 0 0 0; /*um immer auf der gleichen Postion des Winter-Img zu sehen ist*/
+  width: 12%;
+  height: auto;
+  animation: skiAnimation 4s linear forwards;
+  left: 100%;
+}
+
+
+
+@keyframes skiAnimation {
+  from {
+      left: -50px; /* Startposition links außerhalb des Bildschirms */
+  }
+  to {
+    /*Geht nach rechts und verschwindet dann*/
+      display: none;
+  }
+  
+}
+
+
+/* TITEL */
+.textTitle{
+  position: absolute;
+  font-size: 4vw;
+  font-family: Helvetica, sans-serif;
+  margin:  30% 0 0 0;  /*auf die Höhe des Langläufers ausgerichtet*/
+  left: 10%;
+  right: 10%;
+  text-align: center;
+  color:black;
+  opacity: 0;
+  animation-name: textAnimation;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+  .textTitle span{
+    display: inline-block;
+    opacity: 0;
+}
+
+@keyframes textAnimation {
+  from{
+    /*Am Anfang nicht zu sehen*/
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+
+/*Für jeden Buchstaben die Zeit ausrechnen*/
+.textLetter:nth-child(1) {
+  animation: textAnimation 0.3s linear forwards 0.6s;
+}
+
+.textLetter:nth-child(2) {
+  animation: textAnimation 0.3s linear forwards 0.7s;
+}
+
+.textLetter:nth-child(3) {
+  animation: textAnimation 0.3s linear forwards 0.9s;
+}
+
+.textLetter:nth-child(4) {
+  animation: textAnimation 0.3s linear forwards 1.0s;
+}
+
+.textLetter:nth-child(5) {
+  animation: textAnimation 0.3s linear forwards 1.1s;
+}
+
+.textLetter:nth-child(6) {
+  animation: textAnimation 0.3s linear forwards 1.3s;
+}
+
+.textLetter:nth-child(7) {
+  animation: textAnimation 0.3s linear forwards 1.4s;
+}
+
+.textLetter:nth-child(8) {
+  animation: textAnimation 0.3s linear forwards 1.5s;
+}
+
+.textLetter:nth-child(9) {
+  animation: textAnimation 0.3s linear forwards 1.6s;
+}
+
+.textLetter:nth-child(10) {
+  animation: textAnimation 0.3s linear forwards 1.7s;
+}
+
+.textLetter:nth-child(11) {
+  animation: textAnimation 0.3s linear forwards 1.9s;
+}
+
+.textLetter:nth-child(12) {
+  animation: textAnimation 0.3s linear forwards 2.0s;
+}
+
+.textLetter:nth-child(13) {
+  animation: textAnimation 0.3s linear forwards 2.1s;
+}
+
+.textLetter:nth-child(14) {
+  animation: textAnimation 0.3s linear forwards 2.2s;
+}
+
+.textLetter:nth-child(15) {
+  animation: textAnimation 0.3s linear forwards 2.3s;
+}
+
+.textLetter:nth-child(16) {
+  animation: textAnimation 0.3s linear forwards 2.4s;
+}
+
+.textLetter:nth-child(17) {
+  animation: textAnimation 0.3s linear forwards 2.5s;
+}
+
+.textLetter:nth-child(18) {
+  animation: textAnimation 0.3s linear forwards 2.6s;
+}
+
+.textLetter:nth-child(19) {
+  animation: textAnimation 0.3s linear forwards 2.8s;
+}
+
+.textLetter:nth-child(20) {
+  animation: textAnimation 0.3s linear forwards 2.9s;
+}
+
+.textLetter:nth-child(21) {
+  animation: textAnimation 0.3s linear forwards 3.0s;
+}
+.textLetter:nth-child(22) {
+  animation: textAnimation 0.3s linear forwards 3.1s;
+}
+.textLetter:nth-child(23) {
+  animation: textAnimation 0.3s linear forwards 3.2s;
+}
+
+
+
+/*Schnee*/
+#snow{
+  background:none;
+  /*drei Verschiedene Bilder mit Schnee*/
+  background-image:url('https://i.imgur.com/ChQcWgQ.png'), url('https://i.imgur.com/5gvatHT.png'), url('https://i.imgur.com/pUPB6gi.png');
+  height:100%;
+  left:0;
+  position:absolute;
+  pointer-events:none;
+  top:0;
+  width:100%;
+  z-index:1;
+  animation:snow 10s linear infinite
+}
+
+/*Positionsberechnung*/
+@keyframes snow{
+  0%{background-position:0px 0px, 0px 0px, 0px 0px}
+  50%{background-position:500px 500px, 100px 200px, -100px 150px}
+  100%{background-position:500px 1000px, 200px 400px, -100px 300px}
+}
+
+
+
+/* Textabschnitt*/
+.h1-container {
+  position: absolute;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-size: 3vw;
+  margin: 51% 18% 0 20%;
+  color: black;
+  line-height: 1.2; 
+}
+
+.h1-container::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.6vh;
+  background-color: #d90000; 
+  margin: 2px auto; 
+}
+
+
+/*Uebersicht*/
+.Uebersicht-Img{
+  margin: 2% 13% 0 19%;
+  width: 55%;
+  height: auto;
+  position: absolute;
+}
+.text-container{
+  position: absolute;
+  margin: 56.5% 15% 0 15%;
+  font-size: 1.5vw;
+  font-family: Arial;
+}
+
+.text-container a {
+  font-size: 1.5vw; 
+  color: #d90000; 
+  text-decoration: none; 
+  margin: 0;
+}
+
+.text-container a:hover {
+  text-decoration: underline; 
+  text-decoration-color: #d90000; 
+}
+
+
+/* Seitenende */
+
+a.Seitenende{
+  font-size: 100%;
+  color: white;
+}
+
+.Seitenende:hover{  
+  text-decoration: underline;
+}
+
+.Copyright{
+  align-items: center;
+  z-index: 1;
+  font-size: 120%;
+  width: 100%;
+  height: 5%;
+  bottom: 0;
+  margin-top:102%;
+  color: white;
+  position: relative;
+  background-color: #d90000;
+
+}
+
+.Content-Seitenende{
+  margin-left: 3%;
+}

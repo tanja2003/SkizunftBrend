@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Skizunft Brend - Après Ski Party</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+  <body>
+    <!--Navigationsbar-->
+      <nav class="navbar">
+          <img src="logo-skizunft-brend-rgb-1c.png" alt="Logo Skiznuft Brend" class="Logo-Img">
+          <ul class="Links">
+              <li>
+                  <a href="index.html">Startseite</a>
+              </li>
+              <li>
+                  <a href="Geschichte.html" >Geschichte</a>
+              </li>
+              <li id="termineContainer" onmouseover="showSubLinks()" onmouseout="hideSubLinks()">
+                  <a href="#" style="color:#d90000;">Termine</a>
+                  <ul class="sub-links" id="subLinks">
+                      <li style="background-color: #d90000;"><a href="apresSkiParty.html"></a>Après Ski Party</a></li>
+                      <li><a href="#">Festbankett</a></li>
+                      <li><a href="#">Familientag</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#">Kontakt</a>
+              </li>
+  
+              <li>
+                  <a href="https://www.facebook.com/skizunftbrend.furtwangen/" target="_blank" class="Facebook">
+                      <img src="facebook.png" alt="f" >
+                       &nbsp;
+                        
+                  </a>
+              </li>
+              <li>
+                  <a href="https://www.instagram.com/skizunft.brend/?hl=de" target="blank" class="Insta"> 
+                      <img src="insta.png" alt="I"> 
+                  </a>
+              </li>
+          </ul>
+      </nav>
+      <!--Countdown-->
+      <div class="container">
+          <h1 id="headline">Countdown Après Ski Party</h1>
+          <div id="countdown">
+            <ul>
+              <li><span id="days"></span>days</li>
+              <li><span id="hours"></span>Hours</li>
+              <li><span id="minutes"></span>Minutes</li>
+              <li><span id="seconds"></span>Seconds</li>
+            </ul>
+          </div>
+      </div>
+      <script>
+          (function () {
+            const second = 1000,
+              minute = second * 60,
+              hour = minute * 60,
+              day = hour * 24;
+        
+            let today = new Date(),
+              dd = String(today.getDate()).padStart(2, "0"),
+              mm = String(today.getMonth() + 1).padStart(2, "0"),
+              yyyy = today.getFullYear(),
+              nextYear = yyyy + 1,
+              dayMonth = "01/06/",
+              partyTime = "20:00", 
+              partyDateTime = dayMonth + yyyy + " " + partyTime;
+        
+            today = mm + "/" + dd + "/" + yyyy;
+            if (today > partyDateTime) {
+              partyDateTime = dayMonth + nextYear + " " + partyTime;
+            }
+        
+            const countDown = new Date(partyDateTime).getTime(),
+              x = setInterval(function () {
+                const now = new Date().getTime(),
+                  distance = countDown - now;
+        
+                document.getElementById("days").innerText = Math.floor(distance / day),
+                document.getElementById("hours").innerText = Math.floor((distance % day) / hour),
+                document.getElementById("minutes").innerText = Math.floor((distance % hour) / minute),
+                document.getElementById("seconds").innerText = Math.floor((distance % minute) / second);
+        
+                // Sobald der Timer abgelaufen ist
+                if (distance < 0) {
+                  document.getElementById("days").innerText = 0;
+                  document.getElementById("hours").innerText = 0;
+                  document.getElementById("minutes").innerText = 0;
+                  document.getElementById("seconds").innerText = 0;
+                  document.getElementById("headline").innerText = "Après Ski Party!";
+                  clearInterval(x);
+                }
+              }, 0);
+          })();
+      </script>
+  <!--Text-->    
+    </div>
+    <div class="Text-Block">
+      Wir starten am 6. Januar in unser Jubiläumsfestjahr. 
+      Bei ausreichend Schnee findet das Traditionsrennen „Rund um Neukirch“ oder auch „Rund um den Brendschild“ statt. 
+      Passend dazu findet nach dem Rennen eine Après Ski Party im Café der Schwarzwaldhalle Neukirch ab 20.00 Uhr eine statt.
+      Es gibt einen DJ und verschiedenen Bars, unter anderem eine Schneebar. 
+      Wer sich ins Après-Ski-Outfit schwingt, erhält freien Eintritt.
+    </div>
+    <img src="ApresSkiParty.png" alt="ApresSkiParty" class="ApresSki-Img">
+    <!--Seitenende-->
+    <footer class="Copyright">
+      <address class="Content-Seitenende">
+        Copyright © 2023 Skizunft Brend. All Rights Reserved.  
+        <a  href="#" class="Seitenende">Impressum </a>
+        |
+        <a href="#" class="Seitenende">Datenschutz</a>
+      </address>
+    </footer>
+  </body>
+</html>
